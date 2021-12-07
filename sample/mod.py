@@ -1,5 +1,5 @@
 import requests
 
-def mod():
+def mod() -> requests.Response:
     response = requests.get("https://httpbin.org/get")
     return response

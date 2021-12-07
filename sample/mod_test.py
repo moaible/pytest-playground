@@ -1,9 +1,10 @@
 from sample import mod
-from unittest import mock
+from unittest.mock import Mock, patch
 
 class TestMod(object):
 
-    @mock.patch("requests.get")
+    @patch("requests.get")
     def test_mod(self, mock_requests):
-        mock_requests.return_value = {}
-        assert mod.mod() == {}
+        mock_response = Mock(status_code=200)
+        mock_requests.return_value = mock_response
+        assert mod.mod().status_code == 200
