@@ -1,7 +1,15 @@
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
-  - init: echo 'init script'
-    command: pip install pytest
+  - name: Setup
+    init: >
+      echo 'install modules' &&
+      pip --upgrade pip
+    command: pip instal -r requirements.txt
+  - name: Test
+    init: >
+      echo 'install pytest' &&
+      pip install pytest
+    command: pytest
 
 # List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
 ports:
